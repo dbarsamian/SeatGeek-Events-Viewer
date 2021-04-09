@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		681DC842261FB4AA00323F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC841261FB4AA00323F52 /* AppDelegate.swift */; };
 		681DC844261FB4AA00323F52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC843261FB4AA00323F52 /* SceneDelegate.swift */; };
-		681DC846261FB4AA00323F52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC845261FB4AA00323F52 /* ViewController.swift */; };
 		681DC849261FB4AA00323F52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681DC847261FB4AA00323F52 /* Main.storyboard */; };
 		681DC84C261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */; };
 		681DC84E261FB4AE00323F52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 681DC84D261FB4AE00323F52 /* Assets.xcassets */; };
@@ -19,6 +18,7 @@
 		681DC87B261FBD4900323F52 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC87A261FBD4900323F52 /* EventCell.swift */; };
 		681DC893261FCFF400323F52 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC892261FCFF400323F52 /* EventsViewController.swift */; };
 		681DC8A1261FD78000323F52 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC8A0261FD78000323F52 /* EventModel.swift */; };
+		681DC8B5261FDAC100323F52 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 681DC8B4261FDAC100323F52 /* Secrets.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		681DC83E261FB4AA00323F52 /* SeatGeat-EventsViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SeatGeat-EventsViewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		681DC841261FB4AA00323F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		681DC843261FB4AA00323F52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		681DC845261FB4AA00323F52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		681DC848261FB4AA00323F52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		681DC84B261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SeatGeat_EventsViewer.xcdatamodel; sourceTree = "<group>"; };
 		681DC84D261FB4AE00323F52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		681DC87A261FBD4900323F52 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		681DC892261FCFF400323F52 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		681DC8A0261FD78000323F52 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		681DC8B4261FDAC100323F52 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,15 +109,12 @@
 			children = (
 				681DC841261FB4AA00323F52 /* AppDelegate.swift */,
 				681DC843261FB4AA00323F52 /* SceneDelegate.swift */,
-				681DC845261FB4AA00323F52 /* ViewController.swift */,
-				681DC847261FB4AA00323F52 /* Main.storyboard */,
-				681DC8A0261FD78000323F52 /* EventModel.swift */,
-				681DC892261FCFF400323F52 /* EventsViewController.swift */,
-				681DC87A261FBD4900323F52 /* EventCell.swift */,
+				681DC8AD261FDA5F00323F52 /* Model */,
+				681DC8A5261FDA2F00323F52 /* View */,
+				681DC8AC261FDA5A00323F52 /* Controller */,
 				681DC84D261FB4AE00323F52 /* Assets.xcassets */,
-				681DC84F261FB4AE00323F52 /* LaunchScreen.storyboard */,
 				681DC852261FB4AE00323F52 /* Info.plist */,
-				681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */,
+				681DC8B4261FDAC100323F52 /* Secrets.plist */,
 			);
 			path = "SeatGeat-EventsViewer";
 			sourceTree = "<group>";
@@ -138,6 +135,33 @@
 				681DC868261FB4AE00323F52 /* Info.plist */,
 			);
 			path = "SeatGeat-EventsViewerUITests";
+			sourceTree = "<group>";
+		};
+		681DC8A5261FDA2F00323F52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				681DC847261FB4AA00323F52 /* Main.storyboard */,
+				681DC87A261FBD4900323F52 /* EventCell.swift */,
+				681DC84F261FB4AE00323F52 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		681DC8AC261FDA5A00323F52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				681DC892261FCFF400323F52 /* EventsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		681DC8AD261FDA5F00323F52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				681DC8A0261FD78000323F52 /* EventModel.swift */,
+				681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				681DC8B5261FDAC100323F52 /* Secrets.plist in Resources */,
 				681DC851261FB4AE00323F52 /* LaunchScreen.storyboard in Resources */,
 				681DC84E261FB4AE00323F52 /* Assets.xcassets in Resources */,
 				681DC849261FB4AA00323F52 /* Main.storyboard in Resources */,
@@ -270,7 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				681DC846261FB4AA00323F52 /* ViewController.swift in Sources */,
 				681DC842261FB4AA00323F52 /* AppDelegate.swift in Sources */,
 				681DC87B261FBD4900323F52 /* EventCell.swift in Sources */,
 				681DC84C261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld in Sources */,
