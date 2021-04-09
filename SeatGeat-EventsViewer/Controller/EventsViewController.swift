@@ -8,6 +8,8 @@
 import UIKit
 
 class EventsViewController: UITableViewController {
+    
+    @IBOutlet var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
