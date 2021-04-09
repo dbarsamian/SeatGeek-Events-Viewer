@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0eo-fz-RgI">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Events-->
+        <scene sceneID="dvZ-NA-ruf">
+            <objects>
+                <tableViewController title="Events" id="XtZ-ML-Rh6" customClass="EventsViewController" customModule="SeatGeat_EventsViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rk4-zv-cbV">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="180" id="o83-4N-JD8" customClass="EventCell" customModule="SeatGeat_EventsViewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="390" height="180"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o83-4N-JD8" id="o47-Dn-3No">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="180"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" id="74T-6Q-dqu">
+                                            <rect key="frame" x="20" y="11" width="106" height="106"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Psp-ks-XyG">
+                                            <rect key="frame" x="134" y="0.0" width="236" height="160"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="8Pv-3U-3tk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="236" height="91.666666666666671"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xiF-sM-UCj">
+                                                    <rect key="frame" x="0.0" y="99.666666666666671" width="236" height="43.666666666666671"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xLm-6m-6Ay">
+                                                    <rect key="frame" x="0.0" y="151.33333333333334" width="236" height="8.6666666666666572"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Psp-ks-XyG" secondAttribute="bottom" constant="20" symbolic="YES" id="E5D-A9-Pg0"/>
+                                        <constraint firstItem="Psp-ks-XyG" firstAttribute="leading" secondItem="74T-6Q-dqu" secondAttribute="trailing" constant="8" id="Ht4-YP-l9A"/>
+                                        <constraint firstItem="Psp-ks-XyG" firstAttribute="top" secondItem="o47-Dn-3No" secondAttribute="top" id="TUc-sF-fSm"/>
+                                        <constraint firstAttribute="trailing" secondItem="Psp-ks-XyG" secondAttribute="trailing" constant="20" symbolic="YES" id="W1p-aW-Xo5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="xLm-6m-6Ay" id="wnh-F5-ydQ"/>
+                                    <outlet property="locationLabel" destination="xiF-sM-UCj" id="1cC-p7-gMq"/>
+                                    <outlet property="thumbnailImage" destination="74T-6Q-dqu" id="6tv-XR-hkF"/>
+                                    <outlet property="titleLabel" destination="8Pv-3U-3tk" id="0j2-gs-dXe"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XtZ-ML-Rh6" id="gld-1x-wBE"/>
+                            <outlet property="delegate" destination="XtZ-ML-Rh6" id="6Fh-sc-MvK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="SeatGeek Events" id="n47-WW-vz7"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXh-HQ-VTT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="480" y="127.96208530805687"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sIs-rp-wEL">
+            <objects>
+                <navigationController id="0eo-fz-RgI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="f4A-uz-qdZ">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XtZ-ML-Rh6" kind="relationship" relationship="rootViewController" id="45t-fc-IJK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTW-Z8-IFL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-409" y="128"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="defaultImage" width="128" height="128"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
