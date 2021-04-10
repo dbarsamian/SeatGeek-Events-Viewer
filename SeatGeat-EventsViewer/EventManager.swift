@@ -9,10 +9,43 @@ import Foundation
 
 struct EventManager {
     var delegate: EventManagerDelegate?
-    let baseUrl = "https://api.seatgeek.com/2/events"
-    var currentPage = 1
     
-    fileprivate func getSecrets() -> [String:String]? {
+    private let baseUrl = "https://api.seatgeek.com/2/events"
+    private let perPage = 25
+    
+    func fetchEvents(for page: Int) {
+        guard let secrets = getSecrets(), let client_id = secrets["client_id"], let api_key = secrets["api_key"] else {
+            return
+        }
+        let urlString = "\(baseUrl)?client_id=\(client_id)&client_secret=\(api_key)&per_page=\(perPage)&page=\(page)"
+        performRequest(with: urlString)
+    }
+    
+    fileprivate func performRequest(with urlString: String) {
+        if let url = URL(string: urlString) {
+            print("EventManager: Created url: \(url.absoluteString)")
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { data, _, error in
+                if error != nil {
+                    self.delegate?.eventManager(self, didFailWithError: error!)
+                    return
+                }
+                if let safeData = data {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    do {
+                        let events = try decoder.decode(SGEventsData.self, from: safeData)
+                        self.delegate?.eventManager(self, didUpdateEvents: events)
+                    } catch {
+                        print("EventManager: JSON Decoding Error: \(error)")
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    fileprivate func getSecrets() -> [String: String]? {
         guard let secretsPath = Bundle.main.path(forResource: "Secrets", ofType: "plist") else {
             print("Cannot find secrets path!")
             return nil
@@ -22,14 +55,12 @@ struct EventManager {
             print("Cannot get secrets data!")
             return nil
         }
-        guard let plist = try? PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as? [String:String] else {
+        guard let plist = try? PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as? [String: String] else {
             print("Cannot serialize plist!")
             return nil
         }
         return plist
     }
-    
-    
 }
 
 protocol EventManagerDelegate {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,24 @@
 		681DC893261FCFF400323F52 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC892261FCFF400323F52 /* EventsViewController.swift */; };
 		681DC8B5261FDAC100323F52 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 681DC8B4261FDAC100323F52 /* Secrets.plist */; };
 		68C7965D2620D96A0015C667 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7965C2620D96A0015C667 /* EventManager.swift */; };
-		68C796872621141F0015C667 /* SGEventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796862621141F0015C667 /* SGEventsData.swift */; };
+		68C796CC26216B720015C667 /* SGVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BA26216B710015C667 /* SGVenue.swift */; };
+		68C796CD26216B720015C667 /* SGColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BB26216B710015C667 /* SGColors.swift */; };
+		68C796CE26216B720015C667 /* SGTaxonomies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BC26216B710015C667 /* SGTaxonomies.swift */; };
+		68C796CF26216B720015C667 /* SGEventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BD26216B710015C667 /* SGEventsData.swift */; };
+		68C796D026216B720015C667 /* SGGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BE26216B710015C667 /* SGGenres.swift */; };
+		68C796D126216B720015C667 /* SGAnnouncements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BF26216B720015C667 /* SGAnnouncements.swift */; };
+		68C796D226216B720015C667 /* SGMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C026216B720015C667 /* SGMeta.swift */; };
+		68C796D326216B720015C667 /* SGEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C126216B720015C667 /* SGEvents.swift */; };
+		68C796D426216B720015C667 /* SGAccessMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C226216B720015C667 /* SGAccessMethod.swift */; };
+		68C796D526216B720015C667 /* SGPerformers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C326216B720015C667 /* SGPerformers.swift */; };
+		68C796D626216B720015C667 /* SGLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C426216B720015C667 /* SGLocation.swift */; };
+		68C796D726216B720015C667 /* SGImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C526216B720015C667 /* SGImages.swift */; };
+		68C796D826216B720015C667 /* SGCheckoutDisclosures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C626216B720015C667 /* SGCheckoutDisclosures.swift */; };
+		68C796D926216B720015C667 /* SGDocumentSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C726216B720015C667 /* SGDocumentSource.swift */; };
+		68C796DA26216B720015C667 /* SGStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C826216B720015C667 /* SGStats.swift */; };
+		68C796DC26216B720015C667 /* SGMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796CA26216B720015C667 /* SGMessages.swift */; };
+		68C796DD26216B720015C667 /* SGDivisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796CB26216B720015C667 /* SGDivisions.swift */; };
+		68C796E62621719E0015C667 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 68C796E52621719E0015C667 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +75,23 @@
 		681DC892261FCFF400323F52 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		681DC8B4261FDAC100323F52 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		68C7965C2620D96A0015C667 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
-		68C796862621141F0015C667 /* SGEventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGEventsData.swift; sourceTree = "<group>"; };
+		68C796BA26216B710015C667 /* SGVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGVenue.swift; sourceTree = "<group>"; };
+		68C796BB26216B710015C667 /* SGColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGColors.swift; sourceTree = "<group>"; };
+		68C796BC26216B710015C667 /* SGTaxonomies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTaxonomies.swift; sourceTree = "<group>"; };
+		68C796BD26216B710015C667 /* SGEventsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEventsData.swift; sourceTree = "<group>"; };
+		68C796BE26216B710015C667 /* SGGenres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGGenres.swift; sourceTree = "<group>"; };
+		68C796BF26216B720015C667 /* SGAnnouncements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGAnnouncements.swift; sourceTree = "<group>"; };
+		68C796C026216B720015C667 /* SGMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGMeta.swift; sourceTree = "<group>"; };
+		68C796C126216B720015C667 /* SGEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEvents.swift; sourceTree = "<group>"; };
+		68C796C226216B720015C667 /* SGAccessMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGAccessMethod.swift; sourceTree = "<group>"; };
+		68C796C326216B720015C667 /* SGPerformers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPerformers.swift; sourceTree = "<group>"; };
+		68C796C426216B720015C667 /* SGLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGLocation.swift; sourceTree = "<group>"; };
+		68C796C526216B720015C667 /* SGImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGImages.swift; sourceTree = "<group>"; };
+		68C796C626216B720015C667 /* SGCheckoutDisclosures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGCheckoutDisclosures.swift; sourceTree = "<group>"; };
+		68C796C726216B720015C667 /* SGDocumentSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDocumentSource.swift; sourceTree = "<group>"; };
+		68C796C826216B720015C667 /* SGStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGStats.swift; sourceTree = "<group>"; };
+		68C796CA26216B720015C667 /* SGMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGMessages.swift; sourceTree = "<group>"; };
+		68C796CB26216B720015C667 /* SGDivisions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDivisions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C796E62621719E0015C667 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +195,34 @@
 		681DC8AD261FDA5F00323F52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				68C7969126215B620015C667 /* Events */,
 				681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */,
-				68C796862621141F0015C667 /* SGEventsData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		68C7969126215B620015C667 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				68C796C226216B720015C667 /* SGAccessMethod.swift */,
+				68C796BF26216B720015C667 /* SGAnnouncements.swift */,
+				68C796C626216B720015C667 /* SGCheckoutDisclosures.swift */,
+				68C796BB26216B710015C667 /* SGColors.swift */,
+				68C796CB26216B720015C667 /* SGDivisions.swift */,
+				68C796C726216B720015C667 /* SGDocumentSource.swift */,
+				68C796C126216B720015C667 /* SGEvents.swift */,
+				68C796BD26216B710015C667 /* SGEventsData.swift */,
+				68C796BE26216B710015C667 /* SGGenres.swift */,
+				68C796C526216B720015C667 /* SGImages.swift */,
+				68C796C426216B720015C667 /* SGLocation.swift */,
+				68C796CA26216B720015C667 /* SGMessages.swift */,
+				68C796C026216B720015C667 /* SGMeta.swift */,
+				68C796C326216B720015C667 /* SGPerformers.swift */,
+				68C796C826216B720015C667 /* SGStats.swift */,
+				68C796BC26216B710015C667 /* SGTaxonomies.swift */,
+				68C796BA26216B710015C667 /* SGVenue.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +241,9 @@
 			dependencies = (
 			);
 			name = "SeatGeat-EventsViewer";
+			packageProductDependencies = (
+				68C796E52621719E0015C667 /* SDWebImage */,
+			);
 			productName = "SeatGeat-EventsViewer";
 			productReference = 681DC83E261FB4AA00323F52 /* SeatGeat-EventsViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -254,6 +315,9 @@
 				Base,
 			);
 			mainGroup = 681DC835261FB4AA00323F52;
+			packageReferences = (
+				68C796E42621719E0015C667 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 681DC83F261FB4AA00323F52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -298,12 +362,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C796D126216B720015C667 /* SGAnnouncements.swift in Sources */,
 				68C7965D2620D96A0015C667 /* EventManager.swift in Sources */,
+				68C796CC26216B720015C667 /* SGVenue.swift in Sources */,
+				68C796DC26216B720015C667 /* SGMessages.swift in Sources */,
+				68C796D826216B720015C667 /* SGCheckoutDisclosures.swift in Sources */,
+				68C796CF26216B720015C667 /* SGEventsData.swift in Sources */,
+				68C796DD26216B720015C667 /* SGDivisions.swift in Sources */,
 				681DC842261FB4AA00323F52 /* AppDelegate.swift in Sources */,
 				681DC87B261FBD4900323F52 /* EventCell.swift in Sources */,
+				68C796D026216B720015C667 /* SGGenres.swift in Sources */,
 				681DC84C261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld in Sources */,
-				68C796872621141F0015C667 /* SGEventsData.swift in Sources */,
+				68C796D426216B720015C667 /* SGAccessMethod.swift in Sources */,
+				68C796D626216B720015C667 /* SGLocation.swift in Sources */,
+				68C796D926216B720015C667 /* SGDocumentSource.swift in Sources */,
+				68C796D326216B720015C667 /* SGEvents.swift in Sources */,
+				68C796D726216B720015C667 /* SGImages.swift in Sources */,
+				68C796CD26216B720015C667 /* SGColors.swift in Sources */,
+				68C796D226216B720015C667 /* SGMeta.swift in Sources */,
+				68C796D526216B720015C667 /* SGPerformers.swift in Sources */,
 				681DC844261FB4AA00323F52 /* SceneDelegate.swift in Sources */,
+				68C796DA26216B720015C667 /* SGStats.swift in Sources */,
+				68C796CE26216B720015C667 /* SGTaxonomies.swift in Sources */,
 				681DC893261FCFF400323F52 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +719,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		68C796E42621719E0015C667 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		68C796E52621719E0015C667 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 68C796E42621719E0015C667 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */ = {
