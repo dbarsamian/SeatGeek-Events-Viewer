@@ -16,12 +16,12 @@ struct SGEventsData: Codable {
 
     var meta: SGMeta?
     var inHand: [String: String]?
-    var events: [SGEvents]?
+    var events: [SGEvent]?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         meta = try container.decodeIfPresent(SGMeta.self, forKey: .meta)
         inHand = try container.decodeIfPresent([String: String].self, forKey: .inHand)
-        events = try container.decodeIfPresent([SGEvents].self, forKey: .events)
+        events = try container.decodeIfPresent([SGEvent].self, forKey: .events)
     }
 }

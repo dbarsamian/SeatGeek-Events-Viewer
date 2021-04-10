@@ -26,7 +26,7 @@
 		68C796D026216B720015C667 /* SGGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BE26216B710015C667 /* SGGenres.swift */; };
 		68C796D126216B720015C667 /* SGAnnouncements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BF26216B720015C667 /* SGAnnouncements.swift */; };
 		68C796D226216B720015C667 /* SGMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C026216B720015C667 /* SGMeta.swift */; };
-		68C796D326216B720015C667 /* SGEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C126216B720015C667 /* SGEvents.swift */; };
+		68C796D326216B720015C667 /* SGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C126216B720015C667 /* SGEvent.swift */; };
 		68C796D426216B720015C667 /* SGAccessMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C226216B720015C667 /* SGAccessMethod.swift */; };
 		68C796D526216B720015C667 /* SGPerformers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C326216B720015C667 /* SGPerformers.swift */; };
 		68C796D626216B720015C667 /* SGLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796C426216B720015C667 /* SGLocation.swift */; };
@@ -37,6 +37,7 @@
 		68C796DC26216B720015C667 /* SGMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796CA26216B720015C667 /* SGMessages.swift */; };
 		68C796DD26216B720015C667 /* SGDivisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796CB26216B720015C667 /* SGDivisions.swift */; };
 		68C796E62621719E0015C667 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 68C796E52621719E0015C667 /* SDWebImage */; };
+		68C796EB262194500015C667 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796EA262194500015C667 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +83,7 @@
 		68C796BE26216B710015C667 /* SGGenres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGGenres.swift; sourceTree = "<group>"; };
 		68C796BF26216B720015C667 /* SGAnnouncements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGAnnouncements.swift; sourceTree = "<group>"; };
 		68C796C026216B720015C667 /* SGMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGMeta.swift; sourceTree = "<group>"; };
-		68C796C126216B720015C667 /* SGEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEvents.swift; sourceTree = "<group>"; };
+		68C796C126216B720015C667 /* SGEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEvent.swift; sourceTree = "<group>"; };
 		68C796C226216B720015C667 /* SGAccessMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGAccessMethod.swift; sourceTree = "<group>"; };
 		68C796C326216B720015C667 /* SGPerformers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPerformers.swift; sourceTree = "<group>"; };
 		68C796C426216B720015C667 /* SGLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGLocation.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		68C796C826216B720015C667 /* SGStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGStats.swift; sourceTree = "<group>"; };
 		68C796CA26216B720015C667 /* SGMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGMessages.swift; sourceTree = "<group>"; };
 		68C796CB26216B720015C667 /* SGDivisions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDivisions.swift; sourceTree = "<group>"; };
+		68C796EA262194500015C667 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				681DC892261FCFF400323F52 /* EventsViewController.swift */,
+				68C796EA262194500015C667 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,7 +213,7 @@
 				68C796BB26216B710015C667 /* SGColors.swift */,
 				68C796CB26216B720015C667 /* SGDivisions.swift */,
 				68C796C726216B720015C667 /* SGDocumentSource.swift */,
-				68C796C126216B720015C667 /* SGEvents.swift */,
+				68C796C126216B720015C667 /* SGEvent.swift */,
 				68C796BD26216B710015C667 /* SGEventsData.swift */,
 				68C796BE26216B710015C667 /* SGGenres.swift */,
 				68C796C526216B720015C667 /* SGImages.swift */,
@@ -376,7 +379,8 @@
 				68C796D426216B720015C667 /* SGAccessMethod.swift in Sources */,
 				68C796D626216B720015C667 /* SGLocation.swift in Sources */,
 				68C796D926216B720015C667 /* SGDocumentSource.swift in Sources */,
-				68C796D326216B720015C667 /* SGEvents.swift in Sources */,
+				68C796D326216B720015C667 /* SGEvent.swift in Sources */,
+				68C796EB262194500015C667 /* DetailViewController.swift in Sources */,
 				68C796D726216B720015C667 /* SGImages.swift in Sources */,
 				68C796CD26216B720015C667 /* SGColors.swift in Sources */,
 				68C796D226216B720015C667 /* SGMeta.swift in Sources */,

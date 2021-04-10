@@ -13,11 +13,11 @@ struct EventManager {
     private let baseUrl = "https://api.seatgeek.com/2/events"
     private let perPage = 25
     
-    func fetchEvents(for page: Int) {
+    func fetchEvents(page: Int, with query: String = "") {
         guard let secrets = getSecrets(), let client_id = secrets["client_id"], let api_key = secrets["api_key"] else {
             return
         }
-        let urlString = "\(baseUrl)?client_id=\(client_id)&client_secret=\(api_key)&per_page=\(perPage)&page=\(page)"
+        let urlString = "\(baseUrl)?client_id=\(client_id)&client_secret=\(api_key)&per_page=\(perPage)&page=\(page)&q=\(query)"
         performRequest(with: urlString)
     }
     

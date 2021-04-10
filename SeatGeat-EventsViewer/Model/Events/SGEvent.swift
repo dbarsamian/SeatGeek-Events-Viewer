@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SGEvents: Codable {
+struct SGEvent: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case score
