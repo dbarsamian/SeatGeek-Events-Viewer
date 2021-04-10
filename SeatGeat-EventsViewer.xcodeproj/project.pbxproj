@@ -17,8 +17,9 @@
 		681DC867261FB4AE00323F52 /* SeatGeat_EventsViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC866261FB4AE00323F52 /* SeatGeat_EventsViewerUITests.swift */; };
 		681DC87B261FBD4900323F52 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC87A261FBD4900323F52 /* EventCell.swift */; };
 		681DC893261FCFF400323F52 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC892261FCFF400323F52 /* EventsViewController.swift */; };
-		681DC8A1261FD78000323F52 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC8A0261FD78000323F52 /* EventModel.swift */; };
 		681DC8B5261FDAC100323F52 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 681DC8B4261FDAC100323F52 /* Secrets.plist */; };
+		68C7965D2620D96A0015C667 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7965C2620D96A0015C667 /* EventManager.swift */; };
+		68C796872621141F0015C667 /* SGEventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796862621141F0015C667 /* SGEventsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,9 @@
 		681DC868261FB4AE00323F52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		681DC87A261FBD4900323F52 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		681DC892261FCFF400323F52 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		681DC8A0261FD78000323F52 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		681DC8B4261FDAC100323F52 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		68C7965C2620D96A0015C667 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		68C796862621141F0015C667 /* SGEventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGEventsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				681DC841261FB4AA00323F52 /* AppDelegate.swift */,
 				681DC843261FB4AA00323F52 /* SceneDelegate.swift */,
+				68C7965C2620D96A0015C667 /* EventManager.swift */,
 				681DC8AD261FDA5F00323F52 /* Model */,
 				681DC8A5261FDA2F00323F52 /* View */,
 				681DC8AC261FDA5A00323F52 /* Controller */,
@@ -158,8 +161,8 @@
 		681DC8AD261FDA5F00323F52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				681DC8A0261FD78000323F52 /* EventModel.swift */,
 				681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */,
+				68C796862621141F0015C667 /* SGEventsData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,10 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C7965D2620D96A0015C667 /* EventManager.swift in Sources */,
 				681DC842261FB4AA00323F52 /* AppDelegate.swift in Sources */,
 				681DC87B261FBD4900323F52 /* EventCell.swift in Sources */,
 				681DC84C261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld in Sources */,
-				681DC8A1261FD78000323F52 /* EventModel.swift in Sources */,
+				68C796872621141F0015C667 /* SGEventsData.swift in Sources */,
 				681DC844261FB4AA00323F52 /* SceneDelegate.swift in Sources */,
 				681DC893261FCFF400323F52 /* EventsViewController.swift in Sources */,
 			);

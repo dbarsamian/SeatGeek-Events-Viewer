@@ -9,88 +9,48 @@ import UIKit
 
 class EventsViewController: UITableViewController {
     
-    @IBOutlet var searchBar: UISearchBar!
-
+    private var eventManager = EventManager()
+    private var eventsData: SGEventsData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Insert searchBar into navigation title view
+        let searchController = UISearchController(searchResultsController: self)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        
+        // Fetch first page of events
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        guard let perPage = eventsData?.meta.perPage else {
+            return 10
+        }
+        return perPage
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
-        cell.titleLabel.text = "Test Event"
-        cell.locationLabel.text = "Los Angeles, California, United States"
-        var df : DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            formatter.timeStyle = .long
-            return formatter
-        }
-        cell.dateLabel.text = df.string(from: Date())
-        if #available(iOS 13.0, *) {
-            cell.thumbnailImage.image = UIImage(systemName: "questionmark.diamond")
-        } else {
-            // Fallback on earlier versions
-        }
-
-        // Configure the cell...
+        
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -98,6 +58,38 @@ class EventsViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
+}
+
+// MARK: - Event Manager Delegate
+
+extension EventsViewController: EventManagerDelegate {
+    func eventManager(_ eventManager: EventManager, didUpdateEvents events: SGEventsData) {
+        self.eventsData = events
+    }
+    
+    func eventManager(_ eventManager: EventManager, didFailWithError error: Error) {
+        
+    }
+    
+}
+
+// MARK: - Search Controller Delegate
+
+extension EventsViewController: UISearchControllerDelegate {}
+
+// MARK: - Search Results Updating
+
+extension EventsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
+}
+
+// MARK: - Search Bar Delegate
+
+extension EventsViewController: UISearchBarDelegate {
+    
 }
