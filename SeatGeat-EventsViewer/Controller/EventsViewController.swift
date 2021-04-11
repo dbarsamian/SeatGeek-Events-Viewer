@@ -5,14 +5,20 @@
 //  Created by David Barsamian on 4/8/21.
 //
 
+import CoreData
 import SDWebImage
 import UIKit
 
 class EventsViewController: UITableViewController {
+    // Data
     private var eventManager = EventManager()
     private var eventsData: SGEventsData?
     private var currentPage: Int = 1
+    // UI
     private var activityIndicator = UIActivityIndicatorView()
+    // CoreData
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var favoritedEvents: [Event]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +35,17 @@ class EventsViewController: UITableViewController {
 
         // Set up refresh control
         refreshControl?.addTarget(self, action: #selector(didStartRefreshing(_:)), for: .valueChanged)
+        
+        // Set up favorites
+        favoritedEvents = FavoritesData.shared.loadFavorites()
+        
         // Fetch first page of events
         fetchEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Events View will appear")
+        self.tableView.reloadData()
     }
 
     private func fetchEvents(with query: String = "") {
@@ -84,6 +99,30 @@ class EventsViewController: UITableViewController {
         if let imageUrlString = event.performers?.first?.image {
             cell.thumbnailImage.sd_setImage(with: URL(string: imageUrlString), completed: nil)
         }
+        // Check if favorited
+        if let favoritedEvents = favoritedEvents, let eventId = event.id {
+            let isFavorite = favoritedEvents.contains { (element) -> Bool in
+                if element.eventId == eventId {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            if isFavorite {
+                if #available(iOS 13.0, *) {
+                    cell.favoritesImage.image = UIImage(systemName: "heart.fill")
+                } else {
+                    cell.favoritesImage.image = UIImage(named: "heart.fill")
+                }
+            } else {
+                cell.favoritesImage.image = nil
+            }
+            cell.favoritesImage.layer.shadowColor = UIColor.black.cgColor
+            cell.favoritesImage.layer.shadowOpacity = 0.5
+            cell.favoritesImage.layer.shadowOffset = .init(width: 0, height: 1)
+            cell.favoritesImage.layer.shadowRadius = 2
+            cell.favoritesImage.layer.shouldRasterize = true
+        }
         return cell
     }
 
@@ -104,7 +143,7 @@ class EventsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let destViewCtrl = segue.destination as? DetailViewController, let selectedIndexPath = self.tableView.indexPathForSelectedRow, let events = eventsData?.events {
+        if let destViewCtrl = segue.destination as? DetailViewController, let selectedIndexPath = tableView.indexPathForSelectedRow, let events = eventsData?.events {
             destViewCtrl.event = events[selectedIndexPath.row]
         }
     }

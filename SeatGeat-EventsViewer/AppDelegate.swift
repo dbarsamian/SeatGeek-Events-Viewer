@@ -69,7 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
+            print("Context has changes. Saving...")
             do {
+                print("Changes saved.")
                 try context.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
@@ -77,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } else {
+            print("Context has no changes to save.")
         }
     }
 

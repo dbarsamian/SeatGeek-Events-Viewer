@@ -9,6 +9,7 @@ import UIKit
 
 class EventCell: UITableViewCell {
     @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet weak var favoritesImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

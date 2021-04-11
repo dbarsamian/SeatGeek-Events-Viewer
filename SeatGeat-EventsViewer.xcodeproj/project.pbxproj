@@ -38,6 +38,7 @@
 		68C796DD26216B720015C667 /* SGDivisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796CB26216B720015C667 /* SGDivisions.swift */; };
 		68C796E62621719E0015C667 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 68C796E52621719E0015C667 /* SDWebImage */; };
 		68C796EB262194500015C667 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796EA262194500015C667 /* DetailViewController.swift */; };
+		68F7F48626227F7A00F4D80B /* FavoritesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7F48526227F7A00F4D80B /* FavoritesData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		68C796CA26216B720015C667 /* SGMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGMessages.swift; sourceTree = "<group>"; };
 		68C796CB26216B720015C667 /* SGDivisions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDivisions.swift; sourceTree = "<group>"; };
 		68C796EA262194500015C667 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		68F7F48526227F7A00F4D80B /* FavoritesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				681DC84D261FB4AE00323F52 /* Assets.xcassets */,
 				681DC852261FB4AE00323F52 /* Info.plist */,
 				681DC8B4261FDAC100323F52 /* Secrets.plist */,
+				68F7F48526227F7A00F4D80B /* FavoritesData.swift */,
 			);
 			path = "SeatGeat-EventsViewer";
 			sourceTree = "<group>";
@@ -199,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				68C7969126215B620015C667 /* Events */,
-				681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */,
+				68F1CF432622B1AD009BCAA9 /* Core Data */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +229,14 @@
 				68C796BA26216B710015C667 /* SGVenue.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		68F1CF432622B1AD009BCAA9 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				681DC84A261FB4AA00323F52 /* SeatGeat_EventsViewer.xcdatamodeld */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F7F48626227F7A00F4D80B /* FavoritesData.swift in Sources */,
 				68C796D126216B720015C667 /* SGAnnouncements.swift in Sources */,
 				68C7965D2620D96A0015C667 /* EventManager.swift in Sources */,
 				68C796CC26216B720015C667 /* SGVenue.swift in Sources */,
