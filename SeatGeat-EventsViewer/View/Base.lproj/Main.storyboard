@@ -104,10 +104,12 @@
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
                     <connections>
+                        <outlet property="resetSearchButton" destination="faZ-TD-xKL" id="FjV-VC-xLK"/>
                         <segue destination="clh-oU-6Nm" kind="show" identifier="detailSegue" id="JZP-og-DAj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXh-HQ-VTT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="stop" id="faZ-TD-xKL"/>
             </objects>
             <point key="canvasLocation" x="461.53846153846155" y="127.96208530805687"/>
         </scene>

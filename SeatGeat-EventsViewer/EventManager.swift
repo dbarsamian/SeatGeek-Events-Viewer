@@ -37,6 +37,7 @@ struct EventManager {
         guard let secrets = getSecrets(), let client_id = secrets["client_id"], let api_key = secrets["api_key"] else {
             return
         }
+        let query = query.replacingOccurrences(of: " ", with: "+")
         let urlString = "\(baseUrl)?client_id=\(client_id)&client_secret=\(api_key)&per_page=\(perPage)&page=\(page)&q=\(query)"
         performRequest(with: urlString)
     }

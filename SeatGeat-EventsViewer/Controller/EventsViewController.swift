@@ -18,9 +18,13 @@ class EventsViewController: UITableViewController {
     // Data
     private var eventManager = EventManager()
     private var eventsData: SGEventsData?
+    private var events: [SGEvent] = [SGEvent]()
     private var currentPage: Int = 1
+    private var currentQuery: String = ""
+    private var isFetching = false
     // UI
     private var activityIndicator = UIActivityIndicatorView()
+    @IBOutlet weak var resetSearchButton: UIBarButtonItem!
     // CoreData
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var favoritedEvents: [FavoritedEvent]?
@@ -42,12 +46,16 @@ class EventsViewController: UITableViewController {
 
         // Set up refresh control
         refreshControl?.addTarget(self, action: #selector(didStartRefreshing(_:)), for: .valueChanged)
+        
+        // Set up reset search bar button
+        resetSearchButton.target = self
+        resetSearchButton.action = #selector(clearSearchAndFetch)
 
         // Set up favorites
         favoritedEvents = FavoritesData.shared.loadFavorites()
 
         // Fetch first page of events
-        fetchEvents()
+        fetchEvents(with: self.currentQuery)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,13 +65,29 @@ class EventsViewController: UITableViewController {
 
     // MARK: - Internal
     
-    private func fetchEvents(with query: String = "") {
+    private func fetchEvents(with query: String) {
+        self.isFetching = true
         if #available(iOS 13.0, *) {
             self.tableView.tableHeaderView = activityIndicator
             activityIndicator.startAnimating()
             activityIndicator.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 44)
         }
         eventManager.fetchEvents(page: currentPage, with: query)
+    }
+    
+    @objc private func clearSearchAndFetch() {
+        navigationItem.leftBarButtonItem = nil
+        currentQuery = ""
+        clearAndFetchWithQuery(currentQuery)
+    }
+    
+    private func clearAndFetchWithQuery(_ query: String) {
+        isFetching = true
+        currentQuery = query
+        currentPage = 1
+        events.removeAll()
+        eventsData = nil
+        fetchEvents(with: currentQuery)
     }
     
     private func presentAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style) {
@@ -126,25 +150,21 @@ class EventsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let perPage = eventsData?.meta?.perPage else {
-            return 0
-        }
-        return perPage
+        return events.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Get cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
-        guard (eventsData?.events!.count)! > 0 else {
-            self.fetchEvents()
+        guard events.count > 0 else {
+            self.currentQuery = ""
+            self.fetchEvents(with: currentQuery)
             presentAlert(title: "No Results Found", message: "No results found. Try searching for something else.", preferredStyle: .alert)
             return cell
         }
         
         // Get event
-        guard let event = eventsData?.events?[indexPath.row] else {
-            return cell
-        }
+        let event = self.events[indexPath.row]
         
         // Date label
         if let datetimeLocal = event.datetimeLocal, let tzString = event.venue?.timezone, let dateString = createDateString(with: datetimeLocal, at: tzString) {
@@ -169,6 +189,19 @@ class EventsViewController: UITableViewController {
         
         return cell
     }
+    
+    // MARK: - Scroll view
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.height {
+            if !isFetching {
+                self.currentPage += 1
+                self.fetchEvents(with: currentQuery)
+            }
+        }
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "detailSegue", sender: self)
@@ -187,7 +220,7 @@ class EventsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let destViewCtrl = segue.destination as? DetailViewController, let selectedIndexPath = tableView.indexPathForSelectedRow, let events = eventsData?.events {
+        if let destViewCtrl = segue.destination as? DetailViewController, let selectedIndexPath = tableView.indexPathForSelectedRow {
             destViewCtrl.event = events[selectedIndexPath.row]
         }
     }
@@ -196,9 +229,12 @@ class EventsViewController: UITableViewController {
 // MARK: - Event Manager Delegate
 
 extension EventsViewController: EventManagerDelegate {
-    func eventManager(_ eventManager: EventManager, didUpdateEvents events: SGEventsData) {
-        eventsData = events
+    func eventManager(_ eventManager: EventManager, didUpdateEvents eventsData: SGEventsData) {
         DispatchQueue.main.async {
+            self.eventsData = eventsData
+            if let events = self.eventsData!.events {
+                self.events.append(contentsOf: events)
+            }
             self.tableView.reloadData()
             if let refreshControl = self.refreshControl, refreshControl.isRefreshing {
                 refreshControl.endRefreshing()
@@ -207,6 +243,7 @@ extension EventsViewController: EventManagerDelegate {
                 self.activityIndicator.stopAnimating()
                 self.tableView.tableHeaderView = nil
             }
+            self.isFetching = false
         }
     }
 
@@ -222,7 +259,9 @@ extension EventsViewController: UISearchControllerDelegate {
         guard let searchText = searchBar.text?.lowercased() else {
             return
         }
-        fetchEvents(with: searchText)
+        currentQuery = searchText
+        clearAndFetchWithQuery(currentQuery)
+        self.navigationItem.leftBarButtonItem = resetSearchButton
         searchBar.text = ""
         dismiss(animated: true, completion: nil)
     }
