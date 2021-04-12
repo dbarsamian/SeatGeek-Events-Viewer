@@ -31,8 +31,8 @@ class FavoritesData {
         appDelegate.saveContext()
     }
     
-    func loadFavorites(with predicate: NSPredicate? = nil) -> [Event]? {
-        let request: NSFetchRequest<Event> = Event.fetchRequest()
+    func loadFavorites(with predicate: NSPredicate? = nil) -> [FavoritedEvent]? {
+        let request: NSFetchRequest<FavoritedEvent> = FavoritedEvent.fetchRequest()
         request.predicate = predicate
         do {
             return try context.fetch(request)

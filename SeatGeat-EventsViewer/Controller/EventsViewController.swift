@@ -23,8 +23,10 @@ class EventsViewController: UITableViewController {
     private var activityIndicator = UIActivityIndicatorView()
     // CoreData
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var favoritedEvents: [Event]?
+    private var favoritedEvents: [FavoritedEvent]?
 
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
@@ -53,6 +55,8 @@ class EventsViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    // MARK: - Internal
+    
     private func fetchEvents(with query: String = "") {
         if #available(iOS 13.0, *) {
             self.tableView.tableHeaderView = activityIndicator
@@ -61,59 +65,35 @@ class EventsViewController: UITableViewController {
         }
         eventManager.fetchEvents(page: currentPage, with: query)
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    
+    private func presentAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let perPage = eventsData?.meta?.perPage else {
-            return 0
-        }
-        return perPage
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Get cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
-        guard (eventsData?.events!.count)! > 0 else {
-            self.fetchEvents()
-            let alert = UIAlertController(title: "Search Results", message: "No results found. Try searching for something else.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            self.present(alert, animated: true, completion: nil)
-            return cell
-        }
-        // Get event
-        guard let event = eventsData?.events?[indexPath.row] else {
-            return cell
-        }
-        // Date label
-        if let datetimeLocal = event.datetimeLocal, let tzString = event.venue?.timezone, let timezone = TimeZone(identifier: tzString) {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-            formatter.timeZone = timezone
-            if let date = formatter.date(from: datetimeLocal) {
-                formatter.dateStyle = .long
-                formatter.timeStyle = .long
-                let dateString = formatter.string(from: date)
-                cell.dateLabel.text = dateString
+    
+    private func createDateString(with inputString: String, at timeZoneString: String?) -> String? {
+        var formatter: DateFormatter {
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            if let timeZoneString = timeZoneString {
+                df.timeZone = TimeZone(identifier: timeZoneString)
             }
+            return df
         }
-        // Address label
-        if let venue = event.venue, let address = venue.address, let extendedAddress = venue.extendedAddress {
-            cell.locationLabel.text = "\(address) \(extendedAddress)"
+        if let date = formatter.date(from: inputString) {
+            formatter.dateStyle = .long
+            formatter.timeStyle = .long
+            let dateString = formatter.string(from: date)
+            return dateString
+        } else {
+            return nil
         }
-        // Title label
-        cell.titleLabel.text = event.title
-        // Image
-        if let imageUrlString = event.performers?.first?.image {
-            cell.thumbnailImage.sd_setImage(with: URL(string: imageUrlString), completed: nil)
-        }
-        // Check if favorited
+    }
+    
+    private func setCellFavorited(_ cell: EventCell, with event: SGEvent) {
         if let favoritedEvents = favoritedEvents, let eventId = event.id {
             let isFavorite = favoritedEvents.contains { (element) -> Bool in
                 if element.eventId == eventId {
@@ -137,6 +117,56 @@ class EventsViewController: UITableViewController {
             cell.favoritesImage.layer.shadowRadius = 2
             cell.favoritesImage.layer.shouldRasterize = true
         }
+    }
+    
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let perPage = eventsData?.meta?.perPage else {
+            return 0
+        }
+        return perPage
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Get cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
+        guard (eventsData?.events!.count)! > 0 else {
+            self.fetchEvents()
+            presentAlert(title: "No Results Found", message: "No results found. Try searching for something else.", preferredStyle: .alert)
+            return cell
+        }
+        
+        // Get event
+        guard let event = eventsData?.events?[indexPath.row] else {
+            return cell
+        }
+        
+        // Date label
+        if let datetimeLocal = event.datetimeLocal, let tzString = event.venue?.timezone, let dateString = createDateString(with: datetimeLocal, at: tzString) {
+            cell.dateLabel.text = dateString
+        }
+        
+        // Address label
+        if let venue = event.venue, let address = venue.address, let extendedAddress = venue.extendedAddress {
+            cell.locationLabel.text = "\(address) \(extendedAddress)"
+        }
+        
+        // Title label
+        cell.titleLabel.text = event.title
+        
+        // Image
+        if let imageUrlString = event.performers?.first?.image {
+            cell.thumbnailImage.sd_setImage(with: URL(string: imageUrlString), completed: nil)
+        }
+        
+        // Check if favorited
+        setCellFavorited(cell, with: event)
+        
         return cell
     }
 

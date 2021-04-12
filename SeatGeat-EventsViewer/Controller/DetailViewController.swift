@@ -92,9 +92,9 @@ class DetailViewController: UIViewController {
         }
         if favoritedEvents.count < 1 { // If there are no favorited events
             // Favorite this event
-            let event = Event(context: FavoritesData.shared.context)
-            event.eventId = Int64(eventId)
-            favoritedEvents.append(event)
+            let favoritedEvent = FavoritedEvent(context: FavoritesData.shared.context)
+            favoritedEvent.eventId = Int64(eventId)
+            favoritedEvents.append(favoritedEvent)
             DispatchQueue.main.async {
                 self.updateButtonImage(isFavorited: true)
             }
@@ -111,9 +111,9 @@ class DetailViewController: UIViewController {
                         self.updateButtonImage(isFavorited: false)
                     }
                 } else {
-                    let event = Event(context: FavoritesData.shared.context)
-                    event.eventId = Int64(eventId)
-                    favoritedEvents.append(event)
+                    let favoritedEvent = FavoritedEvent(context: FavoritesData.shared.context)
+                    favoritedEvent.eventId = Int64(eventId)
+                    favoritedEvents.append(favoritedEvent)
                     DispatchQueue.main.async {
                         self.updateButtonImage(isFavorited: true)
                     }
@@ -131,7 +131,7 @@ class DetailViewController: UIViewController {
         if let eventUrl = event?.url, let eventId = event?.id, let safariUrl = URL(string: eventUrl), let seatgeekUrl = URL(string: "seatgeek://events/\(eventId)") {
             var imageSafari: UIImage? {
                 if #available(iOS 13.0, *) {
-                    return UIImage(systemName: "safari")
+                    return UIImage(systemName: "safari")?.applyingSymbolConfiguration(.init(scale: .large))
                 } else {
                     return UIImage(named: "safari")
                 }
