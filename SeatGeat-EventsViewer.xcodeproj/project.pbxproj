@@ -18,6 +18,7 @@
 		681DC87B261FBD4900323F52 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC87A261FBD4900323F52 /* EventCell.swift */; };
 		681DC893261FCFF400323F52 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DC892261FCFF400323F52 /* EventsViewController.swift */; };
 		681DC8B5261FDAC100323F52 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 681DC8B4261FDAC100323F52 /* Secrets.plist */; };
+		686D1EB22623F52C006B089C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D1EB12623F52C006B089C /* Activity.swift */; };
 		68C7965D2620D96A0015C667 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7965C2620D96A0015C667 /* EventManager.swift */; };
 		68C796CC26216B720015C667 /* SGVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BA26216B710015C667 /* SGVenue.swift */; };
 		68C796CD26216B720015C667 /* SGColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C796BB26216B710015C667 /* SGColors.swift */; };
@@ -76,6 +77,7 @@
 		681DC87A261FBD4900323F52 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		681DC892261FCFF400323F52 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		681DC8B4261FDAC100323F52 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		686D1EB12623F52C006B089C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		68C7965C2620D96A0015C667 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		68C796BA26216B710015C667 /* SGVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGVenue.swift; sourceTree = "<group>"; };
 		68C796BB26216B710015C667 /* SGColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGColors.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				681DC852261FB4AE00323F52 /* Info.plist */,
 				681DC8B4261FDAC100323F52 /* Secrets.plist */,
 				68F7F48526227F7A00F4D80B /* FavoritesData.swift */,
+				686D1EB12623F52C006B089C /* Activity.swift */,
 			);
 			path = "SeatGeat-EventsViewer";
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				68C796DC26216B720015C667 /* SGMessages.swift in Sources */,
 				68C796D826216B720015C667 /* SGCheckoutDisclosures.swift in Sources */,
 				68C796CF26216B720015C667 /* SGEventsData.swift in Sources */,
+				686D1EB22623F52C006B089C /* Activity.swift in Sources */,
 				68C796DD26216B720015C667 /* SGDivisions.swift in Sources */,
 				681DC842261FB4AA00323F52 /* AppDelegate.swift in Sources */,
 				681DC87B261FBD4900323F52 /* EventCell.swift in Sources */,

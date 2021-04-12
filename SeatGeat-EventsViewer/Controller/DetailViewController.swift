@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var locationLabel: UILabel!
     @IBOutlet private var favoriteButton: UIBarButtonItem!
-    @IBOutlet private weak var actionButton: UIBarButtonItem!
+    @IBOutlet private var actionButton: UIBarButtonItem!
     
     var event: SGEvent?
     
@@ -28,6 +28,10 @@ class DetailViewController: UIViewController {
         // Set up favorite button
         favoriteButton.target = self
         favoriteButton.action = #selector(toggleFavorite)
+        
+        // Set up action button
+        actionButton.target = self
+        actionButton.action = #selector(presentActivitySheet)
         
         // Set information views
         if let event = event {
@@ -117,6 +121,40 @@ class DetailViewController: UIViewController {
             }
         }
         FavoritesData.shared.saveFavorites()
+    }
+    
+    /**
+     Creates an activity view that gives the user the option to open the current
+     event as a link in either Safari or the SeatGeek app.
+     */
+    @objc private func presentActivitySheet() {
+        if let eventUrl = event?.url, let eventId = event?.id, let safariUrl = URL(string: eventUrl), let seatgeekUrl = URL(string: "seatgeek://events/\(eventId)") {
+            var imageSafari: UIImage? {
+                if #available(iOS 13.0, *) {
+                    return UIImage(systemName: "safari")
+                } else {
+                    return UIImage(named: "safari")
+                }
+            }
+            let imageSeatGeek = UIImage(named: "seatgeek")
+            let items: [URL] = [safariUrl]
+            var activities = [UIActivity]()
+            
+            if UIApplication.shared.canOpenURL(safariUrl) {
+                let openInSafari = Activity(title: "Open in Safari", image: imageSafari) { _ in
+                    UIApplication.shared.open(safariUrl)
+                }
+                activities.append(openInSafari)
+            }
+            if UIApplication.shared.canOpenURL(seatgeekUrl) {
+                let openInSG = Activity(title: "Open in SeatGeek", image: imageSeatGeek) { _ in
+                    UIApplication.shared.open(seatgeekUrl)
+                }
+                activities.append(openInSG)
+            }
+            let ac = UIActivityViewController(activityItems: items, applicationActivities: activities)
+            present(ac, animated: true)
+        }
     }
     
     /**
