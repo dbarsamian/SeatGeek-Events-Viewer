@@ -7,6 +7,19 @@
 
 import XCTest
 
+private enum Identifiers: String {
+    case eventCell = "eventCell"
+    case eventThumbnail = "eventThumbnail"
+    case eventFavoriteIcon = "eventFavoriteIcon"
+    case eventTitle = "eventTitle"
+    case eventLocation = "eventLocation"
+    case eventDate = "eventDate"
+    case detailImage = "detailImage"
+    case detailTitle = "detailTitle"
+    case detailLocation = "detailLocation"
+    case detailDate = "detailDate"
+}
+
 class SeatGeat_EventsViewerUITests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -21,14 +34,18 @@ class SeatGeat_EventsViewerUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    
+    func testOpenDetailView() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let expectation: [Identifiers] = [.detailDate, .detailLocation, .detailTitle, .detailImage]
+        app.cells["eventCell"].firstMatch.tap()
+        
+        XCTAssertTrue(app.staticTexts["\(expectation[0])"].exists, "Date view doesn't exist!")
+        XCTAssertTrue(app.staticTexts["\(expectation[1])"].exists, "Location view doesn't exist!")
+        XCTAssertTrue(app.staticTexts["\(expectation[2])"].exists, "Title view doesn't exist!")
+        XCTAssertTrue(app.images["\(expectation[3])"].exists, "Image view doesn't exist!")
     }
 
     func testLaunchPerformance() throws {

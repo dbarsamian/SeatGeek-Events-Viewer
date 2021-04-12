@@ -9,6 +9,11 @@ import CoreData
 import SDWebImage
 import UIKit
 
+/**
+ An object that displays a list of events from SeatGeek's public API.
+
+ An event view uses a table view to display a single column of events from SeatGeek's public API.
+ */
 class EventsViewController: UITableViewController {
     // Data
     private var eventManager = EventManager()
@@ -35,17 +40,17 @@ class EventsViewController: UITableViewController {
 
         // Set up refresh control
         refreshControl?.addTarget(self, action: #selector(didStartRefreshing(_:)), for: .valueChanged)
-        
+
         // Set up favorites
         favoritedEvents = FavoritesData.shared.loadFavorites()
-        
+
         // Fetch first page of events
         fetchEvents()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        print("Events View will appear")
-        self.tableView.reloadData()
+        favoritedEvents = FavoritesData.shared.loadFavorites()
+        tableView.reloadData()
     }
 
     private func fetchEvents(with query: String = "") {
@@ -73,6 +78,15 @@ class EventsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Get cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventCell
+        guard (eventsData?.events!.count)! > 0 else {
+            self.fetchEvents()
+            let alert = UIAlertController(title: "Search Results", message: "No results found. Try searching for something else.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return cell
+        }
         // Get event
         guard let event = eventsData?.events?[indexPath.row] else {
             return cell

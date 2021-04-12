@@ -8,26 +8,50 @@
 import XCTest
 @testable import SeatGeat_EventsViewer
 
-class SeatGeat_EventsViewerTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
+class SGEVEventsManagerTests: XCTestCase, EventManagerDelegate {
+    var events: SGEventsData?
+    var expectation: XCTestExpectation?
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        expectation = nil
+        self.events = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func eventManager(_ eventManager: EventManager, didUpdateEvents events: SGEventsData) {
+        self.events = events
+        expectation?.fulfill()
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func eventManager(_ eventManager: EventManager, didFailWithError error: Error) {
+        XCTAssert(false, "Event manager returned an error!") // Fail if error received
     }
-
+    
+    func testFetchingEvents() throws {
+        // Arrange
+        var eventManager = EventManager()
+        eventManager.delegate = self
+        
+        // Act
+        expectation = expectation(description: "Fetch events")
+        eventManager.fetchEvents(page: 1)
+        
+        // Assert
+        waitForExpectations(timeout: 10)
+        XCTAssertNotNil(events, "Events did not receive any data!")
+    }
+    
+    func testFetchWithQuery() throws {
+        // Arrange
+        let query = "Football"
+        var eventManager = EventManager()
+        eventManager.delegate = self
+        
+        // Act
+        expectation = expectation(description: "Fetch events with query \"Football\"")
+        eventManager.fetchEvents(page: 1, with: query)
+        
+        // Assert
+        waitForExpectations(timeout: 10)
+        XCTAssertNotNil(events, "Events did not receive any data!")
+    }
 }

@@ -31,18 +31,21 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="8Pv-3U-3tk">
                                                     <rect key="frame" x="0.0" y="0.0" width="228" height="41.333333333333336"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="The title of the event." identifier="eventTitle" label="Event Title"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xiF-sM-UCj">
                                                     <rect key="frame" x="0.0" y="49.333333333333329" width="228" height="41.333333333333329"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="The location of the event." identifier="eventLocation" label="Event Location"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xLm-6m-6Ay">
                                                     <rect key="frame" x="0.0" y="98.666666666666671" width="228" height="41.333333333333329"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="The date an event is taking place on." identifier="eventDate" label="Event Date"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
@@ -52,6 +55,9 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="74T-6Q-dqu">
                                             <rect key="frame" x="20" y="20" width="106" height="106"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" hint="An image of an event." identifier="eventThumbnail" label="Thumbnail Image">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="16"/>
@@ -62,6 +68,9 @@
                                             <rect key="frame" x="20" y="20" width="42" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" systemColor="systemRedColor"/>
+                                            <accessibility key="accessibilityConfiguration" hint="An icon displaying a heart if an event is favorited." identifier="eventFavoriteIcon" label="FavoriteIcon">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -71,6 +80,9 @@
                                         <constraint firstAttribute="trailing" secondItem="Psp-ks-XyG" secondAttribute="trailing" constant="20" symbolic="YES" id="W1p-aW-Xo5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" hint="A cell containing information about an event." identifier="eventCell" label="Event Cell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="dateLabel" destination="xLm-6m-6Ay" id="wnh-F5-ydQ"/>
                                     <outlet property="favoritesImage" destination="Pca-9M-0a7" id="9Hq-IU-bSy"/>
@@ -130,6 +142,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eif-E4-UCM">
                                         <rect key="frame" x="20" y="329" width="350" height="45"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" hint="The date the event is taking place on." identifier="detailDate" label="Event Date"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -137,6 +150,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r1T-OI-GzL">
                                         <rect key="frame" x="20" y="382" width="350" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" hint="The location of the event." identifier="detailLocation" label="Event Location"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -144,6 +158,9 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="03l-sx-9f2">
                                         <rect key="frame" x="20" y="97" width="350" height="224"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" hint="An image of the event." identifier="detailImage" label="Event Image">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="16"/>
@@ -153,6 +170,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xhy-xQ-2Fa">
                                         <rect key="frame" x="20" y="0.0" width="350" height="89"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" hint="The title of the event." identifier="detailTitle" label="Event Title"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -166,11 +184,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="JTP-Wd-8eq">
-                        <barButtonItem key="rightBarButtonItem" title="Favorite" image="heart" catalog="system" id="Oak-Ia-lEf">
-                            <color key="tintColor" systemColor="systemRedColor"/>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Favorite" image="heart" catalog="system" id="Oak-Ia-lEf">
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="4KJ-1M-zGn"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionButton" destination="4KJ-1M-zGn" id="XMB-i3-8MM"/>
                         <outlet property="dateLabel" destination="eif-E4-UCM" id="gR8-5i-IcE"/>
                         <outlet property="favoriteButton" destination="Oak-Ia-lEf" id="hWa-2o-Fyt"/>
                         <outlet property="headlineImage" destination="03l-sx-9f2" id="vJm-ep-TAV"/>

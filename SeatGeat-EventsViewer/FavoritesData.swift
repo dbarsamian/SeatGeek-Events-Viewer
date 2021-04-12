@@ -9,6 +9,15 @@ import CoreData
 import Foundation
 import UIKit
 
+/**
+ An object that provides utilites for interacting with Core Data.
+ 
+ Use this object when performing operations with Core Data, namely when saving or loading data.
+ `FavoritesData` also implements the following behavior:
+ 
+ - It sets the context's merge policy to disallow duplicates and to merge duplicates using the already stored object.
+ - It allows searching with a predicate via `loadFavorites(with:)`
+ */
 class FavoritesData {
     static let shared = FavoritesData()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

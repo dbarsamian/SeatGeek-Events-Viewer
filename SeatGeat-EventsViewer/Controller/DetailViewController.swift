@@ -8,22 +8,30 @@
 import CoreData
 import UIKit
 
+/**
+ An object that displays information from an event.
+ - Precondition: An event must be provided during construction and prior to presentation.
+ */
 class DetailViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var headlineImage: UIImageView!
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var locationLabel: UILabel!
     @IBOutlet private var favoriteButton: UIBarButtonItem!
+    @IBOutlet private weak var actionButton: UIBarButtonItem!
     
     var event: SGEvent?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up favorite button
         favoriteButton.target = self
         favoriteButton.action = #selector(toggleFavorite)
         
+        // Set information views
         if let event = event {
+            // Date Label
             if let datetimeLocal = event.datetimeLocal, let tzString = event.venue?.timezone, let timezone = TimeZone(identifier: tzString) {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -35,15 +43,19 @@ class DetailViewController: UIViewController {
                     dateLabel.text = dateString
                 }
             }
+            // Location Label
             if let cityString = event.venue?.city, let stateString = event.venue?.state {
                 locationLabel.text = "\(cityString), \(stateString)"
             }
+            // Headline Image
             if let imgUrlString = event.performers?.first?.image {
                 headlineImage.sd_setImage(with: URL(string: imgUrlString), completed: nil)
             }
+            // Title Label
             if let titleString = event.title {
                 titleLabel.text = titleString
             }
+            // Favorite Bar Button Image
             if let eventId = event.id {
                 let favoritedEvents = FavoritesData.shared.loadFavorites()
                 if let favoritedEvents = favoritedEvents, favoritedEvents.count <= 0 {
@@ -66,6 +78,10 @@ class DetailViewController: UIViewController {
         }
     }
     
+    /**
+     Toggles the favorited status of an event based on it's current favorited status.
+     If an event is already favorited, it will be un-favorited, and vice versa.
+     */
     @objc private func toggleFavorite() {
         guard var favoritedEvents = FavoritesData.shared.loadFavorites(), let eventId = event?.id else {
             return
@@ -103,6 +119,12 @@ class DetailViewController: UIViewController {
         FavoritesData.shared.saveFavorites()
     }
     
+    /**
+     Updates the bar button image for the favorite button. If an event is favorited,
+     then a filled heart will display on the item. If an event is not favorited,
+     then a hollow heart will display on the item.
+     - Parameter isFavorited: Is the current event favorited?
+     */
     fileprivate func updateButtonImage(isFavorited: Bool) {
         if isFavorited {
             if #available(iOS 13.0, *) {
@@ -118,14 +140,4 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
 }
