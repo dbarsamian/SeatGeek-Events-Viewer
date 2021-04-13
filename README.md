@@ -1,7 +1,7 @@
 # SeatGeek-Events-Viewer
 An iOS app that consumes SeatGeek's public API to display events.
 
-<img src="https://user-images.githubusercontent.com/46636471/114477614-52775100-9bb1-11eb-83b6-be329627a6bb.png" width="300"/> <img src="https://user-images.githubusercontent.com/46636471/114477470-12b06980-9bb1-11eb-8bf9-38fdd6ccf823.png" width="300"/> <img src="https://user-images.githubusercontent.com/46636471/114477625-5b682280-9bb1-11eb-9826-eddcf2d9a96c.png" width="300"/>
+<img src="https://user-images.githubusercontent.com/46636471/114477614-52775100-9bb1-11eb-83b6-be329627a6bb.png" width="250"/> <img src="https://user-images.githubusercontent.com/46636471/114477470-12b06980-9bb1-11eb-8bf9-38fdd6ccf823.png" width="250"/> <img src="https://user-images.githubusercontent.com/46636471/114477625-5b682280-9bb1-11eb-9826-eddcf2d9a96c.png" width="250"/>
 
 # Features
 - Infinite-scrolling: The app automatically loads new content when it needs to.
